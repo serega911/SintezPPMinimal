@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{58026010-817f-4792-a02a-b32bd78d12bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{092a153f-f6ba-46d7-a502-cc58edbd2cbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{624a2724-7936-4e17-91a1-01287b383ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algoritms">
+      <UniqueIdentifier>{e9cb6288-7c89-488d-ace3-af65051583fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algoritms\Combinatorics">
+      <UniqueIdentifier>{37dc8ea8-d595-4b72-bc9e-4a996f9ee644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{47fc1815-3e32-4e45-a5ba-27fdc7e30ff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Generate">
+      <UniqueIdentifier>{3dc5d904-c12b-497b-a891-4b967b6f6c90}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreDefines.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Element.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="eElement.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="ITest.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLink.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Combinatorics.h">
+      <Filter>Algoritms\Combinatorics</Filter>
+    </ClInclude>
+    <ClInclude Include="Permutation.h">
+      <Filter>Algoritms\Combinatorics</Filter>
+    </ClInclude>
+    <ClInclude Include="Subset.h">
+      <Filter>Algoritms\Combinatorics</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderedSample.h">
+      <Filter>Algoritms\Combinatorics</Filter>
+    </ClInclude>
+    <ClInclude Include="CombinatoricsTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Element.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MultiLink.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CombinatoricsTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
