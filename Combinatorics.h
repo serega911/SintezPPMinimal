@@ -23,7 +23,7 @@ public:
 
 	virtual bool								next() = 0;
 
-	virtual void init( const Values& values, const int k )
+	virtual void init( const Values& values, const size_t k )
 	{
 		m_values = values;
 

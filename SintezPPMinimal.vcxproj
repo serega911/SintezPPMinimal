@@ -64,26 +64,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Brake.h" />
+    <ClInclude Include="Code.h" />
     <ClInclude Include="CombinatoricsTests.h" />
     <ClInclude Include="CoreDefines.h" />
     <ClInclude Include="CoreTests.h" />
     <ClInclude Include="eElement.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Combinatorics.h" />
+    <ClInclude Include="Friction.h" />
+    <ClInclude Include="GlobalInfo.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="IObject.h" />
+    <ClInclude Include="ISchemeElement.h" />
     <ClInclude Include="ITest.h" />
     <ClInclude Include="MultiLink.h" />
     <ClInclude Include="OrderedSample.h" />
+    <ClInclude Include="Output.h" />
     <ClInclude Include="Permutation.h" />
+    <ClInclude Include="UnitBase.h" />
     <ClInclude Include="Subset.h" />
     <ClInclude Include="Types.h" />
+    <ClInclude Include="UnitGenerate.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Brake.cpp" />
+    <ClCompile Include="Code.cpp" />
     <ClCompile Include="CombinatoricsTests.cpp" />
     <ClCompile Include="CoreTests.cpp" />
     <ClCompile Include="Element.cpp" />
+    <ClCompile Include="Friction.cpp" />
+    <ClCompile Include="GlobalInfo.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MultiLink.cpp" />
+    <ClCompile Include="Output.cpp" />
+    <ClCompile Include="UnitGenerate.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

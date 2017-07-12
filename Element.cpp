@@ -32,16 +32,16 @@ Element_p Element::create( eElement type, GearSetNumer gearSetNumber )
 
 	return ret;
 }
+ 
+// void Element::writeToFile( std::ostream& file ) const
+// {
+// 	file << eElementToChar( m_type ) << m_gearSet.getValue();
+// }
 
-void Element::writeToFile( std::ostream& file ) const
-{
-	file << eElementToChar( m_type ) << m_gearSet.getValue();
-}
-
-void Element::writeToConsole() const
-{
-	std::cout << eElementToChar( m_type ) << m_gearSet.getValue();
-}
+// void Element::writeToConsole() const
+// {
+// 	std::cout << eElementToChar( m_type ) << m_gearSet.getValue();
+// }
 
 const eElement& Element::getType() const
 {

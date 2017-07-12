@@ -17,7 +17,7 @@ NS_CORE_USING
 static NS_CORE Element_p elem1 = NS_CORE Element::create( NS_CORE eElement::SUN_GEAR, NS_CORE GearSetNumer( 1 ) );
 static NS_CORE Element_p elem2 = NS_CORE Element::create( NS_CORE eElement::EPY_GEAR, NS_CORE GearSetNumer( 1 ) );
 static NS_CORE Element_p elem3 = NS_CORE Element::create( NS_CORE eElement::CARRIER, NS_CORE GearSetNumer( 1 ) );
-static NS_CORE Element_p elem4 = NS_CORE Element::create( NS_CORE eElement::SAT_GEAR, NS_CORE GearSetNumer( 1 ) );
+static NS_CORE Element_p elem4 = NS_CORE Element::create( NS_CORE eElement::SUN_GEAR, NS_CORE GearSetNumer( 2 ) );
 
 bool CoreTest::exec()
 {
@@ -41,7 +41,7 @@ bool Core::CoreTest::eElementTest()
 	vect.push_back( { eElement::SUN_GEAR, 'S' } );
 	vect.push_back( { eElement::EPY_GEAR, 'E' } );
 	vect.push_back( { eElement::CARRIER, 'C' } );
-	vect.push_back( { eElement::SAT_GEAR, 's' } );
+
 	for ( const auto& it : vect )
 	{
 		bool local = result && eElementToChar( it.elem ) == it.c && charToeElement( it.c ) == it.elem;
@@ -61,9 +61,9 @@ bool Core::CoreTest::elementTest()
 	bool eElementOk = true;
 	std::set<NS_CORE Element_p> elements;
 	for ( int i = 0; i < 2; i++ )
-		GEAR_SET_NUM_LOOP_UP( gearSetsCount )
+		GEAR_SET_NUM_LOOP_UP( gearSetNumber, gearSetsCount )
 		{
-			ALL_E_ELEMENT_LOOP
+			for ( const auto& eelement : NS_CORE c_centraleElements )
 			{
 				Element_p element = Element::create( eelement, gearSetNumber );
 				elements.insert( element );
@@ -71,7 +71,7 @@ bool Core::CoreTest::elementTest()
 				eElementOk = eElementOk && eelement == element->getType();
 			}
 		}
-	bool local = elements.size() == gearSetsCount * alleElementsCount && gearSetNumOk && eElementOk;
+	bool local = elements.size() == gearSetsCount * c_centraleElements.size() && gearSetNumOk && eElementOk;
 	result = result && local;
 
 	NS_CORE Element_p elem1 = NS_CORE Element::create( NS_CORE eElement::EPY_GEAR, NS_CORE GearSetNumer( 2 ) );

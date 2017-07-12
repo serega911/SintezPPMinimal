@@ -5,12 +5,13 @@
 #include "CoreDefines.h"
 #include "Element.h"
 #include "IObject.h"
+#include "ISchemeElement.h"
 
 NS_CORE_START
 
 SHARED_PTR( MultiLink, MultiLink_p )
 
-class MultiLink: public IObject
+class MultiLink : public IObject, ISchemeElement
 {
 private:
 
@@ -25,9 +26,9 @@ private:
 public:
 
 	static MultiLink_p							create();
-
-	virtual void								writeToFile( std::ostream& file ) const override;
-	virtual void								writeToConsole() const override;
+	MultiLink_p									clone() const;
+	//virtual void								writeToFile( std::ostream& file ) const override;
+	//virtual void								writeToConsole() const override;
 
 	void										addElement( const Element_p& element );
 	bool										isContain( const Element_p& elem ) const;

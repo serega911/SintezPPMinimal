@@ -16,7 +16,7 @@ NS_CORE_USING
 static NS_CORE Element_p elem1 = NS_CORE Element::create( NS_CORE eElement::SUN_GEAR, NS_CORE GearSetNumer( 1 ) );
 static NS_CORE Element_p elem2 = NS_CORE Element::create( NS_CORE eElement::EPY_GEAR, NS_CORE GearSetNumer( 1 ) );
 static NS_CORE Element_p elem3 = NS_CORE Element::create( NS_CORE eElement::CARRIER, NS_CORE GearSetNumer( 1 ) );
-static NS_CORE Element_p elem4 = NS_CORE Element::create( NS_CORE eElement::SAT_GEAR, NS_CORE GearSetNumer( 1 ) );
+static NS_CORE Element_p elem4 = NS_CORE Element::create( NS_CORE eElement::SUN_GEAR, NS_CORE GearSetNumer( 2 ) );
 
 bool CombinatoricsTests::exec()
 {

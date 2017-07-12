@@ -6,17 +6,18 @@
 #include "CoreDefines.h"
 #include "Types.h"
 #include "eElement.h"
+#include "ISchemeElement.h"
 
 NS_CORE_START
 
 SHARED_PTR( Element, Element_p )
 
-class Element: public IObject
+class Element : public IObject, ISchemeElement
 {
 public:
 
-	virtual void								writeToFile( std::ostream& file ) const override;
-	virtual void								writeToConsole() const override;
+	//virtual void								writeToFile( std::ostream& file ) const override;
+	//virtual void								writeToConsole() const override;
 
 	static Element_p							create( eElement type, GearSetNumer gearSetNumber );
 

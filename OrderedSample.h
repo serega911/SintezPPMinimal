@@ -9,7 +9,7 @@ class OrderedSample : public Combinatorics<T>
 {
 public:
 
-	virtual void init( const Values& values, const int k ) override
+	virtual void init( const Values& values, const size_t k ) override
 	{
 		m_values = values;
 

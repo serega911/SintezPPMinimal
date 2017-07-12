@@ -7,26 +7,29 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{092a153f-f6ba-46d7-a502-cc58edbd2cbe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common">
-      <UniqueIdentifier>{624a2724-7936-4e17-91a1-01287b383ca6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algoritms">
-      <UniqueIdentifier>{e9cb6288-7c89-488d-ace3-af65051583fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algoritms\Combinatorics">
-      <UniqueIdentifier>{37dc8ea8-d595-4b72-bc9e-4a996f9ee644}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules">
       <UniqueIdentifier>{47fc1815-3e32-4e45-a5ba-27fdc7e30ff1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\Generate">
       <UniqueIdentifier>{3dc5d904-c12b-497b-a891-4b967b6f6c90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\SchemeElements">
+      <UniqueIdentifier>{1cd1db89-af7b-4fa9-ac5b-ae135803e67e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Interfaces">
+      <UniqueIdentifier>{31808093-5920-4ce0-b640-99abb240337d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Common">
+      <UniqueIdentifier>{624a2724-7936-4e17-91a1-01287b383ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Algoritms">
+      <UniqueIdentifier>{e9cb6288-7c89-488d-ace3-af65051583fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Algoritms\Combinatorics">
+      <UniqueIdentifier>{37dc8ea8-d595-4b72-bc9e-4a996f9ee644}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IObject.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="CoreDefines.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -45,23 +48,53 @@
     <ClInclude Include="ITest.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="MultiLink.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Combinatorics.h">
-      <Filter>Algoritms\Combinatorics</Filter>
+      <Filter>Core\Algoritms\Combinatorics</Filter>
     </ClInclude>
     <ClInclude Include="Permutation.h">
-      <Filter>Algoritms\Combinatorics</Filter>
+      <Filter>Core\Algoritms\Combinatorics</Filter>
     </ClInclude>
     <ClInclude Include="Subset.h">
-      <Filter>Algoritms\Combinatorics</Filter>
+      <Filter>Core\Algoritms\Combinatorics</Filter>
     </ClInclude>
     <ClInclude Include="OrderedSample.h">
-      <Filter>Algoritms\Combinatorics</Filter>
+      <Filter>Core\Algoritms\Combinatorics</Filter>
     </ClInclude>
     <ClInclude Include="CombinatoricsTests.h">
       <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitGenerate.h">
+      <Filter>Modules\Generate</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitBase.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Code.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.h">
+      <Filter>Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ISchemeElement.h">
+      <Filter>Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Brake.h">
+      <Filter>Core\SchemeElements</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLink.h">
+      <Filter>Core\SchemeElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Core\SchemeElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Friction.h">
+      <Filter>Core\SchemeElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>Core\SchemeElements</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalInfo.h">
+      <Filter>Core\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,11 +105,32 @@
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MultiLink.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="CombinatoricsTests.cpp">
       <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitGenerate.cpp">
+      <Filter>Modules\Generate</Filter>
+    </ClCompile>
+    <ClCompile Include="Code.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Brake.cpp">
+      <Filter>Core\SchemeElements</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLink.cpp">
+      <Filter>Core\SchemeElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Core\SchemeElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Friction.cpp">
+      <Filter>Core\SchemeElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Output.cpp">
+      <Filter>Core\SchemeElements</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalInfo.cpp">
+      <Filter>Core\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
