@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClInclude Include="Brake.h" />
     <ClInclude Include="Code.h" />
+    <ClInclude Include="CodeContainer.h" />
     <ClInclude Include="CombinatoricsTests.h" />
     <ClInclude Include="CoreDefines.h" />
     <ClInclude Include="CoreTests.h" />
@@ -90,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="Brake.cpp" />
     <ClCompile Include="Code.cpp" />
+    <ClCompile Include="CodeContainer.cpp" />
     <ClCompile Include="CombinatoricsTests.cpp" />
     <ClCompile Include="CoreTests.cpp" />
     <ClCompile Include="Element.cpp" />

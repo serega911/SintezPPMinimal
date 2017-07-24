@@ -40,6 +40,15 @@ public:
 		return false;
 	}
 
+	virtual int count()
+	{
+		return count(m_values.size(), m_indexes.size());
+	}
+
+	static int count(const int n, const int k)
+	{
+		return pow(n,k);
+	}
 };
 
 NS_END

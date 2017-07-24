@@ -96,6 +96,9 @@
     <ClInclude Include="GlobalInfo.h">
       <Filter>Core\Common</Filter>
     </ClInclude>
+    <ClInclude Include="CodeContainer.h">
+      <Filter>Modules\Generate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Element.cpp">
@@ -131,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="GlobalInfo.cpp">
       <Filter>Core\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeContainer.cpp">
+      <Filter>Modules\Generate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

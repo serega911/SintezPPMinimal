@@ -21,14 +21,17 @@ public:
 	//virtual void								writeToFile( std::ostream& file ) const override;
 	//virtual void								writeToConsole() const override;
 
+	bool										isSame(const Code_p& code) const;
+
 	static Code_p								create();
 	Code_p										clone() const;
 
-	void										setInput( const Element_p& input );
-	void										setOutput( const Element_p& output );
-	void										addLink( const Element_p& elem1, const Element_p& elem2 );
-	void										addFriction(const Element_p& elem1, const Element_p& elem2);
-	void										addBrake(const Element_p& elem1);
+	bool										setInput( const Element_p& input );
+	bool										setOutput( const Element_p& output );
+	bool										addLink( const Element_p& elem1, const Element_p& elem2 );
+	bool										addFriction(const Element_p& elem1, const Element_p& elem2);
+	bool										addBrake(const Element_p& elem1);
+	bool										addElement(const Element_p& elem1);
 
 	const std::set<MultiLink_p>&				getMultiLinks() const;
 	const Input_p								getInput() const;

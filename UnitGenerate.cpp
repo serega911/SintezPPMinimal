@@ -2,17 +2,12 @@
 
 #include "Code.h"
 #include "eElement.h"
-#include "GlobalInfo.h"
 #include "Subset.h"
 
 
 void UnitGenerate::run()
 {
-	NS_CORE GlobalInfo::GlobalData data;
-	data._gearSetsCount = NS_CORE GearSetNumer( 3 );
-	data._w = NS_CORE FreedomDegree( 3 );
-	NS_CORE GlobalInfo::getInstance()->init( data );
-
+	NS_CORE GlobalInfo::getInstance()->init( NS_CORE FreedomDegree(3), NS_CORE GearSetNumer(3), NS_CORE DriverNumber(5) );
 
 	prepareLinks();
 	generateInOut();
@@ -70,27 +65,34 @@ void UnitGenerate::generateInOut()
 
 void UnitGenerate::generateLinks(const Code_p& code)
 {
-	const size_t linksCount = 3;
 	NS_CORE Subset<Link> subset;
-	subset.init(m_links, linksCount);
+	subset.init(m_links, NS_CORE GlobalInfo::getInstance()->getData()->_linksCount.getValue());
 
 	do
 	{
+		bool isAdded = true;
 		auto clone = code->clone();
 		for (const auto &link : subset.get())
-			clone->addLink(link.first, link.second);
-
-		//TODO check
-
-		generateFrictions(clone);
+		{
+			if (!clone->addLink(link.first, link.second))
+			{
+				isAdded = false;
+				break;
+			}
+		}
+		
+		if (isAdded)
+		{
+			clone->fill();
+			generateFrictions(clone);
+		}
+		
 	} while (subset.next());
 
 }
 
 void UnitGenerate::generateFrictions(const Code_p& code)
 {
-	const size_t frictionsCount = 3;
-
 	typedef std::pair<NS_CORE Element_p, NS_CORE Element_p> Friction;
 
 	std::vector<Friction> allFrictions;
@@ -107,7 +109,7 @@ void UnitGenerate::generateFrictions(const Code_p& code)
 	} while (subset.next());
 
 	NS_CORE Subset<Friction> subset1;
-	subset1.init(allFrictions, frictionsCount);
+	subset1.init(allFrictions, NS_CORE GlobalInfo::getInstance()->getData()->_frictionsCount.getValue());
 	do
 	{
 		auto clone = code->clone();
@@ -119,20 +121,15 @@ void UnitGenerate::generateFrictions(const Code_p& code)
 
 void UnitGenerate::generateBrakes(const Code_p& code)
 {
-	const size_t brakesCount = 3;
-	
 	NS_CORE Subset<NS_CORE Element_p> subset;
 	auto elements = code->getElementsForFrictions();
-	subset.init(elements, brakesCount);
+	subset.init(elements, NS_CORE GlobalInfo::getInstance()->getData()->_brakesCount.getValue());
 
 	do
 	{
 		auto clone = code->clone();
 		for (const auto &brake : subset.get())
 			clone->addBrake(brake);
-
-
-		//TODO check
 
 		checkAndFinish(clone);
 	} while (subset.next());
@@ -141,7 +138,7 @@ void UnitGenerate::generateBrakes(const Code_p& code)
 
 void UnitGenerate::checkAndFinish(const Code_p& code)
 {
-	//TODO
+	m_container.add(code);
 }
 
 bool UnitGenerate::checkRequirements() const

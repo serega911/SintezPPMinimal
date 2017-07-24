@@ -5,7 +5,8 @@
 #include "UnitBase.h"
 #include "Element.h"
 #include "Code.h"
-
+#include "GlobalInfo.h"
+#include "CodeContainer.h"
 
 SHARED_PTR(Code, Code_p)
 class Code : public NS_CORE Code
@@ -50,6 +51,32 @@ public:
 	{
 		return Code_p(new Code(*this));
 	}
+
+	void fill()
+	{
+		NS_CORE GearSetNumer max = NS_CORE GlobalInfo::getInstance()->getData()->_gearSetsCount;
+
+		for (NS_CORE GearSetNumer gearSet(1); gearSet <= max; ++gearSet)
+		{
+			for (const auto& eelem : NS_CORE c_centraleElements)
+			{
+				const auto& multilinks = getMultiLinks();
+				auto elem = NS_CORE Element::create(eelem, gearSet);
+				bool isFinded = false;
+
+				for (const auto ml : multilinks)
+				{
+					if (ml->isContain(elem))
+						isFinded = true;
+				}
+
+				if (!isFinded)
+				{
+					addElement(elem);
+				}
+			}
+		}
+	}
 };
 
 class UnitGenerate : public NS_CORE UnitBase
@@ -57,6 +84,7 @@ class UnitGenerate : public NS_CORE UnitBase
 	typedef std::pair<NS_CORE Element_p, NS_CORE Element_p> Link;
 	
 	std::vector<Link>							m_links;
+	CodeContainer								m_container;
 
 	void										prepareLinks();
 	void										generateInOut();

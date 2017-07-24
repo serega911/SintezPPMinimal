@@ -49,6 +49,16 @@ public:
 		return result;
 	}
 
+	friend MultiLink_p							operator+=(const MultiLink_p& multiLink1, const MultiLink_p& multiLink2){
+		multiLink1->m_elements.insert(multiLink2->m_elements.cbegin(), multiLink2->m_elements.cend());
+		return multiLink1;
+	}
+
+	friend bool									operator==( const MultiLink& multiLink1, const MultiLink& multiLink2 )
+	{
+		return multiLink1.m_elements == multiLink2.m_elements;
+	}
+
 };
 
 NS_END

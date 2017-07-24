@@ -40,6 +40,17 @@ public:
 		return ans;
 	}
 
+	static int factorial(const int n)
+	{
+		int ret = 1;
+
+		for (int i = 1; i <= n; i++)
+			ret *= i;
+
+		return ret;
+	}
+
+	virtual int									count() = 0;
 };
 
 NS_END

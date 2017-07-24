@@ -21,6 +21,15 @@ public:
 		return std::next_permutation( m_indexes.begin(), m_indexes.end() );
 	}
 
+	virtual int count()
+	{
+		return count(m_indexes.size());
+	}
+
+	static int count(const int n)
+	{
+		return factorial(n);
+	}
 };
 
 NS_END

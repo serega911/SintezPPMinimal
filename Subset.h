@@ -9,6 +9,16 @@ class Subset : public Combinatorics<T>
 {
 public:
 
+	virtual int count()
+	{
+		return count(m_values.size(), m_indexes.size());
+	}
+
+	static int count(const int n, const int k)
+	{
+		return factorial(n) / (factorial(k)*factorial(n - k));
+	}
+
 	bool next() override
 	{
 		const size_t k = m_indexes.size();

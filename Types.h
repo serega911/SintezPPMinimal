@@ -55,6 +55,8 @@ public:																																			\
 USER_DEFINED_TYPE_INTEGRAL( GearSetNumer, int );
 USER_DEFINED_TYPE_INTEGRAL( FrictionNumer, int );
 USER_DEFINED_TYPE_INTEGRAL( BrakeNumer, int );
+USER_DEFINED_TYPE_INTEGRAL( DriverNumber, int);
+USER_DEFINED_TYPE_INTEGRAL( LinkNumer, int );
 USER_DEFINED_TYPE_INTEGRAL( GearNumer, int );
 USER_DEFINED_TYPE_INTEGRAL( FreedomDegree, int );
 

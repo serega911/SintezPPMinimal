@@ -39,7 +39,7 @@ Code::Code(const Code& obj)
 	}
 
 	for (const auto& multiLink : obj.m_multiLinks)
-		if (clonnedLinks.find(multiLink) != clonnedLinks.end())
+		if (clonnedLinks.find(multiLink) == clonnedLinks.end())
 			m_multiLinks.insert(multiLink->clone());
 }
 
@@ -53,50 +53,73 @@ Code_p Core::Code::clone() const
 	return Code_p(new Code(*this));
 }
 
-void Core::Code::setInput( const Element_p& input )
+bool Core::Code::setInput( const Element_p& input )
 {
 	MultiLink_p multiLink = MultiLink::create();
 	multiLink->addElement( input );
 	m_input = Input::create( multiLink );
 	m_multiLinks.insert( multiLink );
+
+	return m_input != nullptr;
 }
 
-void Core::Code::setOutput( const Element_p& output )
+bool Core::Code::setOutput( const Element_p& output )
 {
 	MultiLink_p multiLink = MultiLink::create();
 	multiLink->addElement( output );
 	m_output = Output::create( multiLink );
 	m_multiLinks.insert( multiLink );
+
+	return m_output != nullptr;
 }
 
-void Core::Code::addLink( const Element_p& elem1, const Element_p& elem2 )
+bool Core::Code::addLink( const Element_p& elem1, const Element_p& elem2 )
 {
-	bool isAdded = false;
+	MultiLink_p ml1 = nullptr;
+	MultiLink_p ml2 = nullptr;
 
 	for ( auto& multiLink : m_multiLinks )
 	{
 		if ( multiLink->isContain( elem1 ) )
 		{
 			multiLink->addElement( elem2 );
-			isAdded = true;
+			ml1 = multiLink;
 		}
 		else if ( multiLink->isContain( elem2 ) )
 		{
 			multiLink->addElement( elem1 );
-			isAdded = true;
+			ml2 = multiLink;
 		}
 	}
 
-	if ( !isAdded )
+	if ( !ml1 && !ml2 )
 	{
 		MultiLink_p multiLink = MultiLink::create();
 		multiLink->addElement( elem1 );
 		multiLink->addElement( elem2 );
 		m_multiLinks.insert( multiLink );
 	}
+	else if (ml1 && ml2)
+	{
+		if (ml1.use_count() == 2)
+		{
+			ml2 += ml1;
+			m_multiLinks.erase(ml1);
+		}
+		else if (ml2.use_count() == 2)
+		{
+			ml1 += ml2;
+			m_multiLinks.erase(ml2);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
-void Core::Code::addFriction(const Element_p& elem1, const Element_p& elem2)
+bool Core::Code::addFriction(const Element_p& elem1, const Element_p& elem2)
 {
 	++m_frictionsCount;
 
@@ -111,10 +134,16 @@ void Core::Code::addFriction(const Element_p& elem1, const Element_p& elem2)
 			right = multilink;
 	}
 
+	if (!left || !right)
+	{
+		return false;
+	}
+
 	m_frictions[m_frictionsCount] = Friction::create( left, right, m_frictionsCount );
+	return true;
 }
 
-void Core::Code::addBrake(const Element_p& elem1)
+bool Core::Code::addBrake(const Element_p& elem1)
 {
 	++m_brakesCount;
 	MultiLink_p left = nullptr;
@@ -128,7 +157,28 @@ void Core::Code::addBrake(const Element_p& elem1)
 		}
 			
 	}
+
+	if (!left)
+		return false;
+
 	m_brakes[m_brakesCount] = Brake::create(left, m_brakesCount);
+	return true;
+}
+
+bool Core::Code::addElement(const Element_p& elem1)
+{
+	for (const auto& multilink : m_multiLinks)
+	{
+		if (multilink->isContain(elem1))
+		{
+			return false;
+		}
+	}
+
+	MultiLink_p multiLink = MultiLink::create();
+	multiLink->addElement(elem1);
+	m_multiLinks.insert(multiLink);
+	return true;
 }
 
 const std::set<MultiLink_p>& Core::Code::getMultiLinks() const
@@ -144,4 +194,25 @@ const Input_p Code::getInput() const
 const Output_p Code::getOutput() const
 {
 	return m_output;
+}
+
+bool Code::isSame(const Code_p& code) const
+{
+	for (const MultiLink_p& my_ml : m_multiLinks)
+	{
+		bool isFinded = false;
+		for (const MultiLink_p& their_ml : code->m_multiLinks)
+		{
+			if ((*my_ml.get()) == (*their_ml.get()))
+			{
+				isFinded = true;
+				break;
+			}
+		}
+
+		if (!isFinded)
+			return false;
+	}
+
+	return true;
 }

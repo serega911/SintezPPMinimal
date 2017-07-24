@@ -13,10 +13,15 @@ public:
 	{
 		FreedomDegree							_w;
 		GearSetNumer							_gearSetsCount;
+		BrakeNumer								_brakesCount;
+		FrictionNumer							_frictionsCount;
+		LinkNumer								_linksCount;
+		DriverNumber							_activeDriversCount;
+		GearNumer								_gearsCount;
 	};
 
 	static GlobalInfo*							getInstance();
-	void										init( const GlobalData& data );
+	void										init( const FreedomDegree& w, const GearSetNumer& n, const DriverNumber& d );
 	const GlobalData*							getData() const;
 
 private:
